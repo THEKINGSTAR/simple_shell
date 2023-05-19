@@ -15,7 +15,7 @@ char **split(char *line)
 
 	while (token != NULL)
 	{
-		token = realloc(tokens, (count + 1) * sizeof(char *));
+		tokens = realloc(tokens, (count + 1) * sizeof(char *));
 		tokens[count] = malloc(strlen(token + 1));
 		strcpy(tokens[count], token);
 		count ++;
