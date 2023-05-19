@@ -1,10 +1,9 @@
 #include "shell.h"
 
-void excute(char *line)
+void excute(char **x)
 {
 	pid_t pid;
 	int status;
-	char *x[] = {line, NULL};
 	pid = fork();
 	if (pid < 0)
 	{
@@ -15,7 +14,7 @@ void excute(char *line)
 	{
 		if ((execve(x[0], x, NULL)) == -1)
 		{
-			printf("%s commaned is not found\n",x[0]);
+			printf("commaned is not found\n");
 			exit(EXIT_FAILURE);
 		}
 	}

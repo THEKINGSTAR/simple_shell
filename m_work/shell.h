@@ -8,6 +8,7 @@
 #include <sys/wait.h>
 
 char *get_line(void);
-void excute(char *line);
+void excute(char **line);
+char **split(char *line);
 
 #endif

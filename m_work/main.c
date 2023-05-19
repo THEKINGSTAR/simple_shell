@@ -3,6 +3,7 @@
 int main(void)
 {
 	char *s;
+	char **x;
 
 	while (1)
 	{
@@ -10,7 +11,8 @@ int main(void)
 	s = get_line();
 	if (strcmp(s, "exit") == 0)
 		break;
-	excute(s);
+	x = split(s);
+	excute(x);
 	}
 	return (0);
 }
