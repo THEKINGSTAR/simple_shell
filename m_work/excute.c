@@ -1,9 +1,11 @@
 #include "shell.h"
 
-void excute(char **x)
+int excute(char **x)
 {
 	pid_t pid;
 	int status;
+
+
 	pid = fork();
 	if (pid < 0)
 	{

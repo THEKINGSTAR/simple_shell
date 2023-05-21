@@ -6,10 +6,12 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <dirent.h>
 
 char *get_line(void);
-int excute(char **line);
+void exe(char **line);
 char **split(char *line);
-char *read_line_by_char(void);
+char **handle_path();
+int find_file(char *dir_name, char *file_name);
 
 #endif

@@ -4,15 +4,19 @@ int main(int argc, char **argv)
 {
 	char *s;
 	char **x;
+	int status;
 
-	while (1)
+	do
 	{
-	printf("($)");
+	printf("($) ");
 	s = get_line();
 	if (strcmp(s, "exit") == 0)
 		break;
 	x = split(s);
-	excute(x);
-	}
-	return (0);
+	status = excute(x);
+	free(s);
+	free(x);
+	}while (status);
+	
+	return (EXIT_FAILURE);
 }
