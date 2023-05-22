@@ -12,6 +12,11 @@ char *get_line(void);
 void exe(char **line);
 char **split(char *line);
 char **handle_path();
-int find_file(char *dir_name, char *file_name);
+
+int find_file(const char *dir_name, const char *file_name);
+void free_grid(char **grid);
+
+void execute(char **line_splited, char **path);
+
 
 #endif
