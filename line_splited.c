@@ -4,7 +4,7 @@ char **split(char *line)
 {
     char **tokens = NULL;
     char *token;
-    const char *delimiters = " \t\r\n\a"; // Whitespace characters
+    const char *delimiters = " \t\r\n\a"; /* Whitespace characters */
 
     int count = 0;
 

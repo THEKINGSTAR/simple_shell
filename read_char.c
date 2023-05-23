@@ -15,7 +15,7 @@ char *read_line_by_char(void)
 		exit(EXIT_FAILURE);
 	}
 	nread = getline(&line, &size, stdin);
-	if (nread == -1)
+	if (nread != 0)
 	{
 		fprintf(stderr,"error to alloc memory");
 		exit(EXIT_FAILURE);

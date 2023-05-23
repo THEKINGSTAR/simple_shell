@@ -5,6 +5,8 @@ void exe(char **args, char **w)
 	int status, i, x, flag = 0;
 	char *path;
 	char *sp_arg;
+	pid_t pid;
+
 	for (i = 0; args[0][i] != '\0'; i++)
 	{
 		if (args[0][i] == '/')
@@ -24,7 +26,6 @@ void exe(char **args, char **w)
 		printf("the command yaaaaa3\n");
 		return;
 	}
-	pid_t pid;
 	pid = fork();
 	if (pid == -1)
 	{
@@ -41,9 +42,11 @@ void exe(char **args, char **w)
 		}
 		
 	}
-	else {
-        if (waitpid(pid, &status, 0) == -1) {
-            perror("waitpid");
-        }
+	else
+	{
+		if (waitpid(pid, &status, 0) == -1)
+		{
+			perror("waitpid");
+		}
 	}
 }
