@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+ * split_path- split
+ * @line:line to split
+ * Return: return the splited line
+ */
+
 char **split_path(char *line)
 {
 	int bufsize = 64;

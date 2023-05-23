@@ -1,22 +1,25 @@
 #include "shell.h"
-
+/**
+ * exe - execute function
+ *
+ * @args: argumnet to exec
+ * @w: characters
+ */
 void exe(char **args, char **w)
 {
 	int status, i, x, flag = 0;
-	char *path;
-	char *sp_arg;
+	char *path, *sp_arg;
 	pid_t pid;
 
 	for (i = 0; args[0][i] != '\0'; i++)
 	{
 		if (args[0][i] == '/')
 		{
-		    	int fd = access(args[0], F_OK);
-			if(fd == -1)
-			{
-				flag = 1;
-				break;
-			}
+			int fd = access(args[0], F_OK);
+
+			if (fd == -1)
+			{	flag = 1;
+				break;	}
 		}
 	}
 	sp_arg = split_arg(args[0]);
@@ -35,18 +38,13 @@ void exe(char **args, char **w)
 	{
 		x = execve(path, args, NULL);
 		free(path);
-		if(x == -1)
-		{
-			perror("execve");
-			exit(EXIT_FAILURE);
-		}
-		
+		if (x == -1)
+		{	perror("execve");
+			exit(EXIT_FAILURE);	}
 	}
 	else
 	{
 		if (waitpid(pid, &status, 0) == -1)
-		{
-			perror("waitpid");
-		}
+		{	perror("waitpid");	}
 	}
 }

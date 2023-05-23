@@ -20,7 +20,7 @@ char *split_arg(char *line);
 
 void execute(char **line_splited, char **path);
 
-void _exiting(char* line, char** line_splited, char** path);
+void _exiting(char *line, char **line_splited, char **path);
 
 #endif
 
