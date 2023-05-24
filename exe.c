@@ -4,8 +4,9 @@
  *
  * @args: argumnet to exec
  * @w: characters
+ * @env: theinvironment
  */
-void exe(char **args, char **w)
+void exe(char **args, char **w, char **env)
 {
 	int status, i, x, flag = 0;
 	char *path, *sp_arg;
@@ -36,7 +37,7 @@ void exe(char **args, char **w)
 	}
 	else if (pid == 0)
 	{
-		x = execve(path, args, NULL);
+		x = execve(path, args, env);
 		free(path);
 		if (x == -1)
 		{	perror("execve");

@@ -8,9 +8,12 @@
 #include <sys/wait.h>
 #include <dirent.h>
 
+extern char **environ;
 
 char *get_line(void);
-void exe(char **line, char **x);
+
+/*void exe(char **line, char **x);*/
+void exe(char **args, char **w, char **environ);
 char **split(char *line);
 char **split_path(char *x);
 char *find_file(char *file_name, char **x);
