@@ -1,6 +1,19 @@
 #include "shell.h"
 
 /**
+ * sigintHandler - termination function
+ * @sig:terminate signal
+ *
+ *
+ */
+void sigintHandler(int sig)
+{
+	(void)sig;
+	printf("\nShell terminated.\n");
+	exit(EXIT_SUCCESS);
+}
+
+/**
  * main - read the code
  * @envp: environment
  * @argc: argumet count
@@ -16,6 +29,8 @@ int main(int argc, char **argv, char **envp)
 	char **w = split_path(u);
 	(void)argc;
 	(void)argv;
+
+	signal(SIGINT, sigintHandler);
 
 	while (1)
 	{
