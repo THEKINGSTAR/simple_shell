@@ -27,7 +27,7 @@ void exe(char **args, char **w, char **env)
 	path = find_file(sp_arg, w);
 	if (strcmp(path, "0") == 0 || flag == 1)
 	{
-		printf("the command yaaaaa3\n");
+		/* printf("\n"); */
 		return;
 	}
 	pid = fork();

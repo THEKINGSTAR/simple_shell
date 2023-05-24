@@ -6,12 +6,12 @@
  *
  *
  */
-void sigintHandler(int sig)
+/*void sigintHandler(int sig)
 {
 	(void)sig;
 	printf("\nShell terminated.\n");
 	exit(EXIT_SUCCESS);
-}
+}*/
 
 /**
  * main - read the code
@@ -30,7 +30,7 @@ int main(int argc, char **argv, char **envp)
 	(void)argc;
 	(void)argv;
 
-	signal(SIGINT, sigintHandler);
+	/* signal(SIGINT, sigintHandler); */
 
 	while (1)
 	{
@@ -38,10 +38,7 @@ int main(int argc, char **argv, char **envp)
 		y = read_line_by_char();
 		x = split(y);
 
-		if (strcmp(x[0], "exit") == 0)
-		{
-			_exiting(y, x, w);
-		}
+		/*if (strcmp(x[0], "exit") == 0) _exiting(y, x, w);*/
 
 		exe(x, w, envp);
 		_free(x);

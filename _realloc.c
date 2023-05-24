@@ -7,10 +7,10 @@
  *
  * Return: NEW pointer to the new array
  */
-char **_realloc(char **ptr_in, size_t *size)
+char **_realloc(char **ptr_in, int *size)
 {
 	char **new_ptr;
-	size_t i;
+	int i;
 
 	new_ptr = malloc(sizeof(char *) * ((*size) + 10));
 	if (new_ptr == NULL)

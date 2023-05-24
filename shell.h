@@ -13,6 +13,9 @@
 extern char **environ;
 
 char *get_line(void);
+int _putchar(char c);
+
+char **_realloc(char **ptr_in, int *size);
 
 /*void exe(char **line, char **x);*/
 void exe(char **args, char **w, char **environ);
