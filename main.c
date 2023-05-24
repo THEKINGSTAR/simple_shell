@@ -6,12 +6,12 @@
  *
  *
  */
-/*void sigintHandler(int sig)
+void sigintHandler(int sig)
 {
 	(void)sig;
 	printf("\nShell terminated.\n");
 	exit(EXIT_SUCCESS);
-}*/
+}
 
 /**
  * main - read the code
