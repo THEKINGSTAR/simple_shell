@@ -1,18 +1,16 @@
 #include "shell.h"
-
 /**
- * _getline_command -  return command
- * 
- * Return: command
+ * _getline_command -  GEts inputs
+ * Return: The input.
  */
 
-char *_getline(void)
+char *_getline_command(void)
 {
 	char *lineptr = NULL;
 	size_t charter_user = 0;
 
 	if (isatty(STDIN_FILENO))
-		write(STDOUT_FILENO, "($) ", 4);
+		write(STDOUT_FILENO, "$ ", 2);
 
 	if (getline(&lineptr, &charter_user, stdin) == -1)
 	{
