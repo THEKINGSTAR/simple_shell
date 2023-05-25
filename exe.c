@@ -1,35 +1,32 @@
 #include "shell.h"
-/**
- * exe - execute function
- *
- * @args: argumnet to exec
- * @w: characters
- * @env: theinvironment
- */
-void exe(char **args, char **w, char **env)
+
+int exe(char **args, char **w, char **envp)
 {
 	int status, i, x, flag = 0;
-	char *path, *sp_arg;
-	pid_t pid;
-
+	char *path;
+	char **splited_first = NULL;
 	for (i = 0; args[0][i] != '\0'; i++)
 	{
 		if (args[0][i] == '/')
 		{
-			int fd = access(args[0], F_OK);
-
+		    	int fd = access(args[0], F_OK);
 			if (fd == -1)
-			{	flag = 1;
-				break;	}
+			{
+				flag = 1;
+				break;
+			}
 		}
 	}
-	sp_arg = split_arg(args[0]);
-	path = find_file(sp_arg, w);
+	splited_first = find_exe_file(args[0]);
+	for (i = 0; splited_first[i] != NULL; i++)
+	{
+	}
+	path = find_file(splited_first[i - 1], w);
 	if (strcmp(path, "0") == 0 || flag == 1)
 	{
-		/* printf("\n"); */
-		return;
+		return (1);
 	}
+	pid_t pid;
 	pid = fork();
 	if (pid == -1)
 	{
@@ -37,15 +34,18 @@ void exe(char **args, char **w, char **env)
 	}
 	else if (pid == 0)
 	{
-		x = execve(path, args, env);
-		free(path);
-		if (x == -1)
-		{	perror("execve");
-			exit(EXIT_FAILURE);	}
+		x = execve(path, args, envp);
+		if(x == -1)
+		{
+			perror("execve");
+			exit(EXIT_FAILURE);
+		}
+		
 	}
-	else
-	{
-		if (waitpid(pid, &status, 0) == -1)
-		{	perror("waitpid");	}
+	else {
+        if (waitpid(pid, &status, 0) == -1) {
+            perror("waitpid");
+        }
 	}
+	return (0);
 }
