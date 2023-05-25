@@ -11,16 +11,16 @@
  */
 int main(int argc, char **argv, char **envp)
 {
-	(void)argc;
-	(void)argv;
 	char *line = NULL;
 	char **tokens = NULL;
 	char *path = NULL;
 	char **paths = NULL;
 	char **path_splited = NULL;
 	
-	int i, errno = 0;
-	
+	int errno = 0;
+
+	(void)argc;
+	(void)argv;
 	path = getenv("PATH");
 	paths = split_path(path);
 	while (1)

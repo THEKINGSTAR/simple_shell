@@ -10,7 +10,7 @@ char **split_path(char *line)
 {
 	char **tokens = NULL;
 	char *token = NULL;
-	size_t i, j;
+	int i, j;
 	int count = 0;
 
 	for (i = 0; line[i] != '\0'; i++)
@@ -18,8 +18,8 @@ char **split_path(char *line)
 		if (line[i] == ':')
 			count++;
 	}
-	if ((count + 1) == strlen(line))
-		return (NULL);
+	/**if ((count + 1) == strlen(line))
+		return (NULL);*/
 	tokens = (char **)malloc(sizeof(char *) * (count + 2));
 	if (tokens == NULL)
 		return (NULL);

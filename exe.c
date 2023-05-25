@@ -2,6 +2,7 @@
 
 int exe(char **args, char **w, char **envp)
 {
+	pid_t pid;
 	int status, i, x, flag = 0;
 	char *path;
 	char **splited_first = NULL;
@@ -26,7 +27,6 @@ int exe(char **args, char **w, char **envp)
 	{
 		return (1);
 	}
-	pid_t pid;
 	pid = fork();
 	if (pid == -1)
 	{
