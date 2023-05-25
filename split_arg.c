@@ -12,7 +12,7 @@ char *split_arg(char *line)
 
 	if (tokens == NULL)
 	{
-		fprintf(stderr, "error in memory allocation");
+		fprintf(stderr, "error in memory allocation::split_args");
 		exit(EXIT_FAILURE);
 	}
 	token = strtok(line, "/");
@@ -26,7 +26,7 @@ char *split_arg(char *line)
 			tokens = realloc(tokens, bufsize * sizeof(char *));
 			if (tokens == NULL)
 			{
-				fprintf(stderr, "error in memory allocation");
+				fprintf(stderr, "error in memory allocation::split_arg");
 				exit(EXIT_FAILURE);
 			}
 		}

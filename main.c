@@ -34,7 +34,7 @@ int main(int argc, char **argv, char **envp)
 
 	while (1)
 	{
-		printf("($) ");
+		printf("$ ");
 		y = read_line_by_char();
 		x = split(y);
 

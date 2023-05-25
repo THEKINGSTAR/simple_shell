@@ -17,13 +17,13 @@ char **split(char *line)
 		tokens = realloc(tokens, (count + 1) * sizeof(char *));
 		if (tokens == NULL)
 		{
-			perror("realloc");
+			perror("realloc:: split");
 			exit(EXIT_FAILURE);
 		}
 		tokens[count] = strdup(token);
 		if (tokens[count] == NULL)
 		{
-			perror("strdup");
+			perror("strdup::split");
 			exit(EXIT_FAILURE);
 		}
 	       count++;
@@ -32,7 +32,7 @@ char **split(char *line)
 	tokens = realloc(tokens, (count + 1) * sizeof(char *));
 	if (tokens == NULL)
 	{
-		perror("realloc");
+		perror("realloc::split");
 		exit(EXIT_FAILURE);
 	}
 	tokens[count] = NULL;

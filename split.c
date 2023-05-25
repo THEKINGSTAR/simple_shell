@@ -16,7 +16,7 @@ char **split_line(char *line)
 	tokens = malloc(sizeof(char *) * 64);
 	if (tokens == NULL)
 	{
-		fprintf(stderr, "error in memory allocation");
+		fprintf(stderr, "error in memory allocation::split_line");
 		exit(EXIT_FAILURE);
 	}
 	position = 0;
@@ -32,7 +32,7 @@ char **split_line(char *line)
 			tokens = realloc(tokens, bufsize);
 			if (tokens == NULL)
 			{
-				fprintf(stderr, "error in memory allocation");
+				fprintf(stderr, "error in memory allocation::split_line");
 				exit(EXIT_FAILURE);
 			}
 		}

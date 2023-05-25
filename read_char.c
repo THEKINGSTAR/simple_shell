@@ -15,13 +15,13 @@ char *read_line_by_char(void)
 	line = malloc(sizeof(char) * bufsize);
 	if (line == NULL)
 	{
-		fprintf(stderr, "error to alloc memory");
+		fprintf(stderr, "error to alloc memory::read_line_char");
 		exit(EXIT_FAILURE);
 	}
 	nread = getline(&line, &size, stdin);
 	if (!nread)
 	{
-		fprintf(stderr, "error to alloc memory");
+		fprintf(stderr, "error to alloc memory::read_lin::char");
 		exit(EXIT_FAILURE);
 	}
 	while (1)
@@ -39,7 +39,7 @@ char *read_line_by_char(void)
 			line = realloc(line, bufsize);
 			if (line == NULL)
 			{
-				fprintf(stderr, "error to alloc memory");
+				fprintf(stderr, "error to alloc memory:read_line_char");
 				exit(EXIT_FAILURE);
 			}
 		}
