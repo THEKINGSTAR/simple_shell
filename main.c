@@ -39,7 +39,7 @@ int main(int argc, char **argv, char **envp)
 					paths = split_path(envp);
 					sp = find_file(tokens[0], paths);
 				}
-				if (z == 1 ||  strcmp(sp, "0") == 0)
+				if (z == 1 || (z ==0 && strcmp(sp, "0") == 0))
 					puts("command not found");
 				else
 					exe(tokens, sp, envp);

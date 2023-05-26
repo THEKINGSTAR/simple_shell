@@ -27,6 +27,10 @@ int is_path(char *args)
 				return (1);
                                 
                         }
+			else
+			{
+				return (2);
+			}
                 }
         }
 	return (0);
