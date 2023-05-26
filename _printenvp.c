@@ -5,13 +5,14 @@
  */
 void _printenv(char **envp)
 {
-        int i = 0;
 
-        while (envp[i] != NULL)
-        {
-                write(1, envp[i], _strlen(envp[i]));
-                write(1, "\n", 1);
-                i++;
-        }
+	size_t run = 0;
+
+	while (envp[run])
+	{
+		write(STDOUT_FILENO, envp[run], _strlen(envp[run]));
+		write(STDOUT_FILENO, "\n", 1);
+		run++;
+	}
 }
 
