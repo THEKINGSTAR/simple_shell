@@ -27,10 +27,7 @@ int main(int argc, char **argv, char **envp)
 		prompt();
 			
 		line = get_line();
-		if (is_empty_input(line) == 1)
-			;
-		else
-		{
+		
 		if (line == NULL)
 			return (0);
 		if (line)
@@ -68,7 +65,7 @@ int main(int argc, char **argv, char **envp)
 				write(STDOUT_FILENO, "\n", 1);
 			exit(EXIT_SUCCESS);
 		}
-		}
+		
 		
 	}
 	
