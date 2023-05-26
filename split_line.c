@@ -12,14 +12,14 @@ char **split_line(char *line)
 	char *token = NULL;
 	size_t i, j;
 	int count = 0;
-
+	
+	if (is_empty_input(line) == 1)
+		return (NULL);
 	for (i = 0; line[i] != '\0'; i++)
 	{
 		if (line[i] == ' ')
 			count++;
 	}
-	if ((count + 1) == _strlen(line))
-		return (NULL);
 	tokens = (char **)malloc(sizeof(char *) * (count + 2));
 	if (tokens == NULL)
 		return (NULL);

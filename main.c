@@ -12,51 +12,46 @@
 int main(int argc, char **argv, char **envp)
 {
 	
-	char *line = NULL;
-	char **tokens = NULL;
-	
-	char **paths = NULL;
-	char *sp = NULL;
-	
+	char *line = NULL, **tokens = NULL, **paths = NULL; *sp = NULL;
 	int z;
 	
 	(void)argv;
 	(void)argc;
 	while (1)
 	{
-		prompt();
-			
+		prompt();	
 		line = get_line();
 		
 		if (line == NULL)
 			return (0);
 		if (line)
 		{
-			if (_strcmp(line, "env") == 0)
+			tokens = split_line(line);
+			if (tokens == NULL)
+				free(line);
+			else
+			{
+
+			if (_strcmp(tokens[0], "env") == 0)
                 	{
                         	_printenv(envp);
                 	}
 			else
 			{
-
-			
-			tokens = split_line(line);
-			if (tokens == NULL)
-				return (0);
-			z = is_path(tokens[0]);
-			sp = tokens[0];
-			if (z == 0)
-			{
-				paths = split_path(envp);
-				sp = find_file(tokens[0], paths);
-		
+				z = is_path(tokens[0]);
+				sp = tokens[0];
+				if (z == 0)
+				{
+					paths = split_path(envp);
+					sp = find_file(tokens[0], paths);
+				}
+				if (z == 1 || (z == 0 && strcmp(sp, "0") == 0))
+					puts("command not found");
+				else
+					exe(tokens, sp, envp);
+				free(line);
+				free(tokens);
 			}
-			if (z == 1 || (z == 0 && strcmp(sp, "0") == 0))
-				puts("command not found");
-			else
-				exe(tokens, sp, envp);
-			free(line);
-			free(tokens);
 			}
 		}
 		else
@@ -68,6 +63,5 @@ int main(int argc, char **argv, char **envp)
 		
 		
 	}
-	
 	return (EXIT_SUCCESS);
 }
