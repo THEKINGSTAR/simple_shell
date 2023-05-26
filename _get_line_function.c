@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
-* getted_line - take line from user
+* get_line - take line from user
 *
 * Return: string
 */

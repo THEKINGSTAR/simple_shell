@@ -8,7 +8,7 @@
 #include <dirent.h>
 #include <sys/wait.h>
 
-char *gettd_line(void);
+char *read_line(void);
 char **split_line(char *line);
 void prompt(void);
 char **split_path(char **line);
