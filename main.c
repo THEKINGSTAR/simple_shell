@@ -16,37 +16,36 @@ int main(int argc, char **argv, char **envp)
 
 	(void)argv;
 	(void)argc;
-	while (1)
-	{
+	while (1){
 		prompt();
 		line = get_line();
-		if (line != NULL && is_empty_input(line) == 0)
-		{
-			remove_newline(line);
+		if (line == NULL)
+			return (0);
+		if (line){
 			tokens = split_line(line);
-			if (_strcmp(tokens[0], "exit") == 0)
-			{
+			if (tokens == NULL)
+				return (0);
+			if (_strcmp(tokens[0], "exit") == 0){
 				free(line);
 				free(tokens);
-				exit(EXIT_SUCCESS);
-			}
+				exit(EXIT_SUCCESS); }
 			if (_strcmp(tokens[0], "env") == 0)
 				_printenv(envp);
-			else
-			{
+			else{
 				z = is_path(tokens[0]);
 				sp = tokens[0];
-				if (z == 0)
-				{
+				if (z == 0){
 					paths = split_path(envp);
-					sp = find_file(tokens[0], paths);
-				}
+					sp = find_file(tokens[0], paths); }
 				if (z == 1 || (z == 0 && strcmp(sp, "0") == 0))
 					puts("command not found");
 				else if (z == 2 || (z == 0 && strcmp(sp, "0") != 0))
 					exe(tokens, sp, envp);
 				free(line);
-				free(tokens);
-			}}}
+				free(tokens); }}
+		else{
+			if (isatty(STDIN_FILENO))
+				write(STDOUT_FILENO, "\n", 1);
+			exit(EXIT_SUCCESS); }}
 	return (EXIT_SUCCESS);
 }

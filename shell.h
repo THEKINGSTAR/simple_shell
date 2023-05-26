@@ -8,7 +8,7 @@
 #include <dirent.h>
 #include <sys/wait.h>
 
-char *get_line(void);
+char *gettd_line(void);
 char **split_line(char *line);
 void prompt(void);
 char **split_path(char **line);
@@ -20,7 +20,7 @@ int is_path(char *args);
 int is_empty_input(char *line);
 char *_get_path(char **env);
 void remove_newline(char *str);
-char *getted_line(void);
+char *get_line(void);
 
 int _strlen(char *s);
 char *_strcpy(char *dest, char *src);

@@ -5,7 +5,7 @@
 *
 * Return: string
 */
-char *getted_line(void)
+char *get_line(void)
 {
 	char *line = NULL;
 	size_t size;
