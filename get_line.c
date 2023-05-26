@@ -19,9 +19,14 @@ char *get_line(void)
 		exit(EXIT_SUCCESS);
 	}
 	i = 0;
-	while (line[i])
+	while (1)
 	{
 		c = line[i];
+		if (c == '\n')
+		{
+			line[i] = '\0';
+			return (line);
+		}
 		if (c == EOF)
 		{
 			exit(EXIT_SUCCESS);
