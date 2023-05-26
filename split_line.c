@@ -18,6 +18,8 @@ char **split_line(char *line)
 		if (line[i] == ' ')
 			count++;
 	}
+	if ((count + 1) == _strlen(line))
+                return (NULL);
 	tokens = (char **)malloc(sizeof(char *) * (count + 2));
 	if (tokens == NULL)
 		return (NULL);
