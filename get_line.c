@@ -19,6 +19,8 @@ char *get_line(void)
 		return (NULL);
 	}
 	i = 0;
+	if (_strcmp(line, "\n") == 0)
+		return (line);
 	while (1)
 	{
 		c = line[i];

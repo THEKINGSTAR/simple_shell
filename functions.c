@@ -27,10 +27,6 @@ int is_path(char *args)
 				return (1);
                                 
                         }
-			else
-			{
-				return (2);
-			}
                 }
         }
 	return (0);
@@ -40,15 +36,16 @@ int is_empty_input(char *line)
 {
 	int i;
 	int x;
+	int z = 0;
 
 	x = _strlen(line);
 	for(i = 0; line[i] != '\0'; i++)
 	{
 		if (line[i] == ' ')
 		{
-			i++;
+			z++;
 		}
-		if (i == x)
+		if (z == x || _strcmp(line, "\n") == 0)
 		{
 			return (1);
 		}

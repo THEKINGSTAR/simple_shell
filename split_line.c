@@ -13,8 +13,6 @@ char **split_line(char *line)
 	size_t i, j;
 	int count = 0;
 	
-	if (is_empty_input(line) == 1)
-		return (NULL);
 	for (i = 0; line[i] != '\0'; i++)
 	{
 		if (line[i] == ' ')

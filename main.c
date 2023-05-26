@@ -21,10 +21,7 @@ int main(int argc, char **argv, char **envp)
 	{
 		prompt();	
 		line = get_line();
-		
-		if (line == NULL)
-			return (0);
-		if (line)
+		if (line != NULL && is_empty_input(line) == 0)
 		{
 			tokens = split_line(line);
 			if (tokens == NULL)
@@ -45,7 +42,7 @@ int main(int argc, char **argv, char **envp)
 					paths = split_path(envp);
 					sp = find_file(tokens[0], paths);
 				}
-				if (z == 1 || (z == 0 && strcmp(sp, "0") == 0))
+				if (z == 1 ||  strcmp(sp, "0") == 0)
 					puts("command not found");
 				else
 					exe(tokens, sp, envp);
@@ -54,14 +51,7 @@ int main(int argc, char **argv, char **envp)
 			}
 			}
 		}
-		else
-		{
-			if (isatty(STDIN_FILENO))
-				write(STDOUT_FILENO, "\n", 1);
-			exit(EXIT_SUCCESS);
-		}
-		
-		
+		free(line);
 	}
 	return (EXIT_SUCCESS);
 }
