@@ -9,6 +9,7 @@ char *get_line(void)
 {
 	char *line = NULL;
 	size_t size;
+	int i, c;
 
 	size = 0;
 
@@ -16,6 +17,15 @@ char *get_line(void)
 	{
 		free(line);
 		exit(EXIT_SUCCESS);
+	}
+	i = 0;
+	while (line[i])
+	{
+		c = line[i];
+		if (c == EOF)
+		{
+			exit(EXIT_SUCCESS);
+		}
 	}
 	return (line);
 
