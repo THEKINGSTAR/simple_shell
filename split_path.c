@@ -15,7 +15,6 @@ char **split_path(char **env)
 	int count = 0;
 
 	line = _get_path(env);
-
 	for (i = 0; line[i] != '\0'; i++)
 	{
 		if (line[i] == ':')

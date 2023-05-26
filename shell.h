@@ -19,8 +19,8 @@ void _printenv(char **envp);
 int is_path(char *args);
 int is_empty_input(char *line);
 char *_get_path(char **env);
-void ctrl_d(char *line);
 void remove_newline(char *str);
+char *getted_line(void);
 
 int _strlen(char *s);
 char *_strcpy(char *dest, char *src);

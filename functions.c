@@ -91,19 +91,3 @@ void remove_newline(char *str)
 	}
 	str[i] = '\0';
 }
-
-/**
- * _exit - exit
- * @x: 1
- * @y: 2
- * @z: 3
- *
- * Return: none
- */
-void _exit(char *x, char *y, char **z)
-{
-	free(x);
-	free(y);
-	free(z);
-	exit(EXIT_SUCCESS);
-}

@@ -25,7 +25,11 @@ int main(int argc, char **argv, char **envp)
 			remove_newline(line);
 			tokens = split_line(line);
 			if (_strcmp(tokens[0], "exit") == 0)
-				void _exit(line, tokens[0], tokens);
+			{
+				free(line);
+				free(tokens);
+				exit(EXIT_SUCCESS);
+			}
 			if (_strcmp(tokens[0], "env") == 0)
 				_printenv(envp);
 			else
@@ -43,8 +47,6 @@ int main(int argc, char **argv, char **envp)
 					exe(tokens, sp, envp);
 				free(line);
 				free(tokens);
-			}
-		}
-	}
+			}}}
 	return (EXIT_SUCCESS);
 }

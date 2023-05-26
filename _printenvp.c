@@ -7,9 +7,8 @@
 */
 void _printenv(char **envp)
 {
-	size_t run;
+	size_t run = 0;
 
-	run = 0;
 	while (envp[run])
 	{
 		write(STDOUT_FILENO, envp[run], _strlen(envp[run]));
