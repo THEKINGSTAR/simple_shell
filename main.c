@@ -23,11 +23,8 @@ int main(int argc, char **argv, char **envp)
 		line = get_line();
 		if (line != NULL && is_empty_input(line) == 0)
 		{
+			remove_newline(line);
 			tokens = split_line(line);
-			if (tokens == NULL)
-				free(line);
-			else
-			{
 
 			if (_strcmp(tokens[0], "env") == 0)
                 	{
@@ -49,9 +46,10 @@ int main(int argc, char **argv, char **envp)
 				free(line);
 				free(tokens);
 			}
-			}
+			
 		}
-		free(line);
+		
+		
 	}
 	return (EXIT_SUCCESS);
 }

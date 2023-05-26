@@ -38,17 +38,33 @@ int is_empty_input(char *line)
 	int x;
 	int z = 0;
 
-	x = _strlen(line);
 	for(i = 0; line[i] != '\0'; i++)
 	{
+		if (_strcmp(line, "\n") == 0)
+			return (1);
+		remove_newline(line);
+		x = _strlen(line);
 		if (line[i] == ' ')
 		{
 			z++;
 		}
-		if (z == x || _strcmp(line, "\n") == 0)
+		if (z == x)
 		{
 			return (1);
 		}
 	}
 	return (0);
-}	
+}
+
+void remove_newline(char *str)
+{
+	int i = 0;
+
+	while (str[i] != '\0')
+	{
+		if (str[i] == '\n')
+			break;
+		i++;
+	}
+	str[i] = '\0';
+}
