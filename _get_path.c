@@ -1,21 +1,34 @@
 #include "shell.h"
 
+/**
+ * _strncmp - compare
+ * @s1: 1
+ * @s2: 2
+ * @n: 3
+ *
+ * Return: size_t
+ */
 size_t _strncmp(char *s1, char *s2, size_t n)
 {
-        size_t i, j;
+	size_t i, j;
 
-        for (j = 0; s1[j] != '\0' && j < n; j++)
-        {
-                i = s1[j] - s2[j];
-
-                if (i != 0)
-                {
-                        return (i);
-                }
-        }
-        return (0);
+	for (j = 0; s1[j] != '\0' && j < n; j++)
+	{
+		i = s1[j] - s2[j];
+		if (i != 0)
+		{
+			return (i);
+		}
+	}
+	return (0);
 }
 
+/**
+ * _get_path - get path
+ * @env: 1
+ *
+ * Return: string
+ */
 char *_get_path(char **env)
 {
 	size_t index = 0, var = 0, count = 5;

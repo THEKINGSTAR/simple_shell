@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * get_line - take line from user
- *
- * Return: string
- */
+* get_line - take line from user
+*
+* Return: string
+*/
 char *get_line(void)
 {
 	char *line = NULL;
@@ -12,7 +12,7 @@ char *get_line(void)
 
 	size = 0;
 
-	if(getline(&line, &size, stdin) == -1)
+	if (getline(&line, &size, stdin) == -1)
 	{
 		free(line);
 		exit(EXIT_SUCCESS);

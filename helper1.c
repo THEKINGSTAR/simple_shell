@@ -1,6 +1,10 @@
 #include "shell.h"
-
-
+/**
+ * _strlen - length
+ * @s: 1
+ *
+ * Return: int
+ */
 int _strlen(char *s)
 {
 	int x;
@@ -13,13 +17,14 @@ int _strlen(char *s)
 	}
 	return (x);
 }
+
 /**
- * _strcpy - copying the array
- * @dest: first input
- * @src: second input
- *
- * Return: char *
- */
+* _strcpy - copying the array
+* @dest: first input
+* @src: second input
+*
+* Return: char *
+*/
 char *_strcpy(char *dest, char *src)
 {
 	int i;
@@ -31,6 +36,14 @@ char *_strcpy(char *dest, char *src)
 	*(dest + i) = '\0';
 	return (dest);
 }
+
+/**
+ * _strcat - cat
+ * @dest: 1
+ * @src: 2
+ *
+ * Return: string
+ */
 char *_strcat(char *dest, char *src)
 {
 	int i;
@@ -47,24 +60,13 @@ char *_strcat(char *dest, char *src)
 	return (dest);
 }
 
-void _puts(char *str)
-{
-	int i;
-
-	for (i = 0; *(str + i) != '\0'; i++)
-	{
-		_putchar(*(str + i));
-	}
-	
-}
-
 /**
- * _strcmp - copmare two str
- * @s1: first input
- * @s2: secend input
- *
- * Return: int
- */
+* _strcmp - copmare two str
+* @s1: first input
+* @s2: secend input
+*
+* Return: int
+*/
 int _strcmp(char *s1, char *s2)
 {
 	int x;
@@ -80,10 +82,6 @@ int _strcmp(char *s1, char *s2)
 		}
 	}
 	return (x);
-}
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
 }
 
 /**

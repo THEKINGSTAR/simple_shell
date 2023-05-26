@@ -1,18 +1,19 @@
 #include "shell.h"
 
 /**
- * main - entry point
- *
- * @argc: first paramter
- * @argv: second paramter
- * @envp: third paramter
- *
- * Return: 0 if success
- */
+* main - entry point
+*
+* @argc: first paramter
+* @argv: second paramter
+* @envp: third paramter
+*
+* Return: 0 if success
+*/
 int main(int argc, char **argv, char **envp)
-{	
+{
 	char *line = NULL, **tokens = NULL, **paths = NULL, *sp = NULL;
-	int z;	
+	int z;
+
 	(void)argv;
 	(void)argc;
 	while (1)
@@ -24,15 +25,9 @@ int main(int argc, char **argv, char **envp)
 			remove_newline(line);
 			tokens = split_line(line);
 			if (_strcmp(tokens[0], "exit") == 0)
-			{
-				free(line);
-				free(tokens);
-				exit(EXIT_SUCCESS);
-			}
+				void _exit(line, tokens[0], tokens);
 			if (_strcmp(tokens[0], "env") == 0)
-                	{
-                        	_printenv(envp);
-                	}
+				_printenv(envp);
 			else
 			{
 				z = is_path(tokens[0]);
@@ -44,7 +39,7 @@ int main(int argc, char **argv, char **envp)
 				}
 				if (z == 1 || (z == 0 && strcmp(sp, "0") == 0))
 					puts("command not found");
-				else if(z == 2 || (z == 0 && strcmp(sp, "0") != 0))
+				else if (z == 2 || (z == 0 && strcmp(sp, "0") != 0))
 					exe(tokens, sp, envp);
 				free(line);
 				free(tokens);

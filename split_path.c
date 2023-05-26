@@ -2,7 +2,7 @@
 
 /**
  * split_path - split line to argument
- * @line: line from user
+ * @env: line from user
  *
  * Return: array of string
  */
@@ -34,7 +34,6 @@ char **split_path(char **env)
 		j++;
 		token = strtok(NULL, ":");
 	}
-	
 	tokens[j] = NULL;
 	return (tokens);
 }

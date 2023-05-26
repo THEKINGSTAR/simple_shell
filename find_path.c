@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * find_file - find file in whitch directory
- * @fn: first pramter
- * @p: all pathes
- *
- * Return: the path
- */
+* find_file - find file in whitch directory
+* @fn: first pramter
+* @p: all pathes
+*
+* Return: the path
+*/
 char *find_file(char *fn, char **p)
 {
 	int i;
@@ -14,15 +14,12 @@ char *find_file(char *fn, char **p)
 	char *dir_path = NULL;
 	struct dirent *e = NULL;
 	DIR *dir = NULL;
-	
-	
-	for(i = 0; p[i] != NULL; i++)
+
+	for (i = 0; p[i] != NULL; i++)
 	{
 		dir = opendir(p[i]);
 		if (dir == NULL)
-		{
 			return (NULL);
-		}
 		while ((e = readdir(dir)) != NULL)
 		{
 			if (e->d_type == DT_REG && _strcmp(e->d_name, fn) == 0)
