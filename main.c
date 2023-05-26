@@ -12,7 +12,7 @@
 int main(int argc, char **argv, char **envp)
 {
 	
-	char *line = NULL, **tokens = NULL, **paths = NULL; *sp = NULL;
+	char *line = NULL, **tokens = NULL, **paths = NULL, *sp = NULL;
 	int z;
 	
 	(void)argv;
