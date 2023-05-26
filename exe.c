@@ -9,22 +9,20 @@ int exe(char **args, char *path, char **envp)
 	pid = fork();
 	if (pid == -1)
 	{
-		perror("fork");
+		exit(EXIT_FAILURE);
 	}
 	else if (pid == 0)
 	{
 		x = execve(path, args, envp);
 		if(x == -1)
 		{
-			perror("execve");
 			exit(EXIT_FAILURE);
 		}
 		
 	}
 	else {
-        if (waitpid(pid, &status, 0) == -1) {
-            perror("waitpid");
+		wait(&status);
+
         }
-	}
 	return (0);
 }
