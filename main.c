@@ -41,7 +41,7 @@ int main(int argc, char **argv, char **envp)
 				}
 				if (z == 1 || (z ==0 && strcmp(sp, "0") == 0))
 					puts("command not found");
-				else
+				else if(z == 2 || (z ==0 && strcmp(sp, "0") != 0))
 					exe(tokens, sp, envp);
 				free(line);
 				free(tokens);
