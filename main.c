@@ -23,6 +23,8 @@ int main(int argc, char **argv, char **envp)
 		{
 			remove_newline(line);
 			tokens = split_line(line);
+			if (_strcmp(token[0], "exit") == 0)
+				break;
 			if (_strcmp(tokens[0], "env") == 0)
                 	{
                         	_printenv(envp);

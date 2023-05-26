@@ -9,7 +9,6 @@ char *get_line(void)
 {
 	char *line = NULL;
 	size_t size;
-	int i, c;
 
 	size = 0;
 
@@ -17,20 +16,6 @@ char *get_line(void)
 	{
 		free(line);
 		exit(EXIT_SUCCESS);
-	}
-	i = 0;
-	while (1)
-	{
-		c = line[i];
-		if (c == '\n')
-		{
-			line[i] = '\0';
-			return (line);
-		}
-		if (c == EOF)
-		{
-			exit(EXIT_SUCCESS);
-		}
 	}
 	return (line);
 
