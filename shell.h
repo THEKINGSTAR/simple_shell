@@ -2,32 +2,80 @@
 #define SHELL_H
 
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <dirent.h>
+#include <string.h>
+#include <sys/types.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <errno.h>
+#include <dirent.h>
+#include <signal.h>
 
-char *read_line(void);
-char **split_line(char *line);
-void prompt(void);
-char **split_path(char **line);
-char **find_exe_file(char *line);
-char *find_file(char *fn, char **p);
-int exe(char **args, char *path, char **env);
-void _printenv(char **envp);
-int is_path(char *args);
-int is_empty_input(char *line);
-char *_get_path(char **env);
-void remove_newline(char *str);
-char *get_line(void);
 
-int _strlen(char *s);
-char *_strcpy(char *dest, char *src);
-char *_strcat(char *dest, char *src);
-void _puts(char *str);
-int _strcmp(char *str1, char *str2);
-int _putchar(char c);
-char *_strdup(char *str);
+/*constants*/
+#define EXTERNAL_COMMAND 1
+#define INTERNAL_COMMAND 2
+#define PATH_COMMAND 3
+#define INVALID_COMMAND -1
 
-#endif
+#define min(x, y) (((x) < (y)) ? (x) : (y))
+
+/**
+ *struct map - a struct that maps a command name to a function 
+ *
+ *@command_name: name of the command
+ *@func: the function that executes the command
+ */
+
+typedef struct map
+{
+	char *command_name;
+	void (*func)(char **command);
+} function_map;
+
+extern char **environ;
+extern char *line;
+extern char **commands;
+extern char *shell_name;
+extern int status;
+
+/*helpers*/
+void print(char *, int);
+char **tokenizer(char *, char *);
+void remove_newline(char *);
+int _strlen(char *);
+void _strcpy(char *, char *);
+
+/*helpers2*/
+int _strcmp(char *, char *);
+char *_strcat(char *, char *);
+int _strspn(char *, char *);
+int _strcspn(char *, char *);
+char *_strchr(char *, char);
+
+/*helpers3*/
+char *_strtok_r(char *, char *, char **);
+int _atoi(char *);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+void ctrl_c_handler(int);
+void remove_comment(char *);
+
+/*utils*/
+int parse_command(char *);
+void execute_command(char **, int);
+char *check_path(char *);
+void (*get_func(char *))(char **);
+char *_getenv(char *);
+
+/*built_in*/
+void env(char **);
+void quit(char **);
+
+/*main*/
+extern void non_interactive(void);
+extern void initializer(char **current_command, int type_command);
+
+#endif /*SHELL_H*/
+
+
