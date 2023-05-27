@@ -4,33 +4,78 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#include <unistd.h>
 #include <errno.h>
+#include <dirent.h>
+#include <signal.h>
 
 
-int lsh_ctrld(char **args);
-int lsh_cd(char **args);
-int lsh_help(char **args);
+/*constants*/
+#define EXTERNAL_COMMAND 1
+#define INTERNAL_COMMAND 2
+#define PATH_COMMAND 3
+#define INVALID_COMMAND -1
+
+#define min(x, y) (((x) < (y)) ? (x) : (y))
+
+/**
+ *struct map - a struct that maps a command name to a function 
+ *
+ *@command_name: name of the command
+ *@func: the function that executes the command
+ */
+
+typedef struct map
+{
+	char *command_name;
+	void (*func)(char **command);
+} function_map;
+
 extern char **environ;
-int lsh_exit(char **args);
-int _strcmp(char *s1, char *s2);
-size_t _strncmp(char *s1, char *s2, size_t n);
-int _strlen(char *s);
-char *_strcpy(char *dest, char *src);
-char *_strcat(char *dest, char *src);
-int _putchar(char c);
+extern char *line;
+extern char **commands;
+extern char *shell_name;
+extern int status;
 
-char *_get_path(char **env);
-int _values_path(char **arg, char **env);
-char *_getline_command(void);
-void _getenv(char **env);
-char **tokenize(char *lineptr);
-void _exit_command(char **args, char *lineptr, int _exit);
-int _fork_fun(char **arg, char **av, char **env,
-char *lineptr, int np, int c);
+/*helpers*/
+void print(char *, int);
+char **tokenizer(char *, char *);
+void remove_newline(char *);
+int _strlen(char *);
+void _strcpy(char *, char *);
+
+/*helpers2*/
+int _strcmp(char *, char *);
+char *_strcat(char *, char *);
+int _strspn(char *, char *);
+int _strcspn(char *, char *);
+char *_strchr(char *, char);
+
+/*helpers3*/
+char *_strtok_r(char *, char *, char **);
+int _atoi(char *);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+void ctrl_c_handler(int);
+void remove_comment(char *);
+
+/*utils*/
+int parse_command(char *);
+void execute_command(char **, int);
+char *check_path(char *);
+void (*get_func(char *))(char **);
+char *_getenv(char *);
+
+/*built_in*/
+void env(char **);
+void quit(char **);
+
+/*main*/
+extern void non_interactive(void);
+extern void initializer(char **current_command, int type_command);
+
+#endif /*SHELL_H*/
 
 
-#endif /* SHELL_H */
